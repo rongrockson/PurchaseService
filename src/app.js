@@ -11,6 +11,8 @@ import purchaseRoutes from './routes/purchaseRoutes.js';
 import UserRepository from './repositories/UserRepository.js';
 import User from './models/User.js';
 import config from './config/config.js';
+import connectDB from './config/db.js'; // Import the connectDB function
+
 
 dotenv.config();
 
@@ -21,10 +23,10 @@ app.use(cors({
     credentials: true,  // Enable credentials (cookies, authorization headers)
 }));
 app.use(express.json());
+connectDB(config.mongoURI);
 
-mongoose.connect(config.mongoURI)
-    .then(() => logger.info('Connected to MongoDB'))
-    .catch((err) => logger.error('MongoDB connection error:', err));
+
+
 
 const purchaseRepository = new PurchaseRepository(Purchase);
 const userRepository = new UserRepository(User);
