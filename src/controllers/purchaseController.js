@@ -102,7 +102,6 @@ class PurchaseController {
         }
     }
 
-    // ... other methods
 }
 
 export default PurchaseController;

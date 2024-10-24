@@ -19,9 +19,12 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin: config.frontendURL,  // Allow your frontend origin
-    credentials: true,  // Enable credentials (cookies, authorization headers)
+    origin: config.frontendURL,
+    credentials: true,
 }));
+
+app.use('/purchase', purchaseRoutes);
+
 app.use(express.json());
 connectDB(config.mongoURI);
 
